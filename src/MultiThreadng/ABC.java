@@ -1,8 +1,7 @@
-package com.example;
-
+package MultiThreadng;
 class ABC implements Runnable {
 
-  public void run(){
+  public void run() {
     try {
       Thread.sleep(100);
     } catch (InterruptedException ie) {
@@ -20,5 +19,3 @@ class ABC implements Runnable {
     }
   }
 }
-
-

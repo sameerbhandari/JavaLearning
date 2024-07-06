@@ -1,21 +1,37 @@
-import Strings.StringOperations;
-import Strings.interview;
-
-import java.awt.desktop.SystemEventListener;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-//        String str = "sameermsa is QA";
-        String str = "I live in Delhi";
-        String str1 = "delhii";
-        int n = 5;
-        int[] arr = new int[]{1,1,2,1};
-        int[] brr = new int[]{2,1,1,1};
-//        System.out.println(StringOperations.reverseString(str));
-//        System.out.println(StringOperations.removeDuplicates(str));
-//        System.out.println(StringOperations.isPalindrome(str));
-//        System.out.println(StringOperations.isAnagram(str,str1));
-//        System.out.println(StringOperations.firstNonRepeatedCharacter(str1));
-        System.out.println(interview.largestOccurence(str1));
+        int[] arr = {1, 0, 2, 2, 0, 2, 1, 2, 1, 1, 2, 0};
+        Map<Integer, Integer> hmap = new HashMap<>();
+        int[] resultArray = new int[arr.length];
+
+        for(int i =0; i < arr.length; i++){
+            int currentValue = arr[i];
+            if(hmap.containsKey(currentValue)){
+                int count = hmap.get(currentValue);
+                hmap.put(currentValue, count + 1);
+            }
+            else{
+                hmap.put(currentValue,1);
+            }
+        }
+        int[] tempArray = new int[hmap.size()];
+        int index = 0;
+
+        for(Map.Entry<Integer, Integer> entry: hmap.entrySet()){
+            tempArray[index] = entry.getValue();
+        }
+
+        Arrays.sort(tempArray);
+
+        index = 0;
+        for(int i = 0; i < tempArray.length;i++){
+            int numberOfTimes = hmap.get(tempArray[i]);
+            for(int j = 0; j< numberOfTimes; j++){
+                resultArray[index] = tempArray[i];
+                index++;
+            }
+        }
     }
 }
