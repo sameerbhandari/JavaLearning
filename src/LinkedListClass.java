@@ -1,47 +1,78 @@
+import java.util.LinkedList;
+import java.util.List;
+
 public class LinkedListClass {
-    int n;
-    LinkedListClass nextItem;
+    int data;
+    LinkedListClass next;
 
-    public LinkedListClass getNextItem() {
-        return nextItem;
-    }
-    public LinkedListClass(int n){
-        this.n = n;
+    public LinkedListClass(int data) {
+        this.data = data;
+        this.next = null;
     }
 
-    public LinkedListClass addItem(int n, LinkedListClass list){
-        LinkedListClass newNode = new LinkedListClass(n);
-        LinkedListClass currentNode = list;
-        while(list.nextItem!=null){
-            currentNode = list.nextItem;
+    public void addItemAtEnd(int data) {
+        LinkedListClass newNode = new LinkedListClass(data);
+        LinkedListClass current = this;
+        while (current.next != null) {
+            current = current.next;
         }
-        currentNode.nextItem = newNode;
-        return list;
+        current.next = newNode;
     }
 
-    public LinkedListClass reverseList(int start, int end, LinkedListClass list){
-        LinkedListClass currentNode = list;
-        LinkedListClass startingNode;
-        LinkedListClass endingNode;
-        int currentNodeIndex = 0;
-
-        while(currentNodeIndex!=start-1){
-            currentNode = currentNode.nextItem;
-            currentNodeIndex++;
+    public void printList() {
+        LinkedListClass current = this;
+        while (current != null) {
+            System.out.print(current.data + "=>");
+            current = current.next;
         }
-        startingNode = currentNode;
-        while(currentNodeIndex!=end){
-            currentNode = currentNode.nextItem;
-            currentNodeIndex++;
+        System.out.println("null");
+    }
+
+    public LinkedListClass reverseList() {
+        LinkedListClass current = this;
+        LinkedListClass previous = null;
+
+        while (current != null) {
+            LinkedListClass next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
         }
-        endingNode = currentNode;
+        return previous;
+    }
 
-        LinkedListClass tempNode = startingNode;
-
-        while(tempNode != endingNode){
-            tempNode.nextItem.nextItem = tempNode;
-
+    public int lengthOfList() {
+        int count = 0;
+        LinkedListClass current = this;
+        while (current != null) {
+            count++;
+            current = current.next;
         }
-    return list;
+        return count;
+    }
+
+    public int searchElementIndex(int searchItem) {
+        //return the index of the searchItem
+        LinkedListClass current = this;
+        int index = 1;
+
+        while (current != null) {
+            if (current.data == searchItem) {
+                break;
+            }
+            current = current.next;
+            index++;
+        }
+        return index;
+    }
+
+    public static void main(String[] args) {
+        LinkedListClass l1 = new LinkedListClass(5);
+        l1.addItemAtEnd(6);
+        l1.addItemAtEnd(8);
+        l1.addItemAtEnd(9);
+        l1.addItemAtEnd(10);
+        System.out.println("Length of List => " + l1.lengthOfList());
+        l1.printList();
     }
 }
