@@ -65,14 +65,21 @@ public class LinkedListClass {
         }
         return index;
     }
-
+    public LinkedListClass insertAtSpecificLocation(){
+        return this;
+    }
     public static void main(String[] args) {
         LinkedListClass l1 = new LinkedListClass(5);
         l1.addItemAtEnd(6);
         l1.addItemAtEnd(8);
         l1.addItemAtEnd(9);
         l1.addItemAtEnd(10);
+        l1.printList();
         System.out.println("Length of List => " + l1.lengthOfList());
+        int searchItem = 10;
+        System.out.println("Search Item = " + searchItem + " is present on index i = " + l1.searchElementIndex(searchItem));
+        l1 = l1.reverseList();
+        System.out.print("Reversed List");
         l1.printList();
     }
 }

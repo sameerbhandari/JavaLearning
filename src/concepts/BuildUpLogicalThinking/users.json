@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "user_id": 1,
+      "username": "MP user",
+      "email": "john.doe@example.com"
+    },
+    {
+      "user_id": 2,
+      "username": "Inventory User",
+      "email": "jane.smith@example.com"
+    },
+    {
+      "user_id": 3,
+      "username": "Internal User",
+      "email": "sam.brown@example.com"
+    }
+  ]
+}
