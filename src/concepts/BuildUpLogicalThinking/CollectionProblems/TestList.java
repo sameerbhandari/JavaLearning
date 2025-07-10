@@ -1,14 +1,62 @@
 package concepts.BuildUpLogicalThinking.CollectionProblems;
 
-import java.util.LinkedList;
-import java.util.List;
+import javax.xml.transform.Templates;
 
-public class LinkedListTutorial {
-    public static void main(String[] args) {
-        List<String> l1 = new LinkedList<>();
-        l1.add("Name1");
-        l1.add("Name2");
-        l1.add("Name3");
-        System.out.println(l1);
+public class TestList {
+    TestList next;
+    int value;
+
+    TestList(int value){
+        this.value = value;
     }
+
+    TestList addItemToList(int value, TestList list){
+        TestList currentNode = list;
+
+        while (currentNode.next != null){
+            currentNode = currentNode.next;
+        }
+        currentNode.next = new TestList(value);
+        return list;
+    }
+
+    TestList removeOneElement(int value, TestList list){
+        if (list == null) {
+            return null;
+        }
+        if (list.value == value) {
+            return list.next;
+        }
+
+        TestList currentNode = list;
+        TestList prev = null;
+
+        while (currentNode.next != null){
+            if(currentNode.value == value){
+                prev.next = currentNode.next;
+                break;
+            }
+            prev = currentNode;
+            currentNode = currentNode.next;
+        }
+        return list;
+    }
+
+    TestList reverseList(TestList list){
+        TestList prev = null;
+        TestList current = list;
+
+        while(current != null){
+            TestList temp = current;
+
+            current.next = prev;
+            current = temp.next;
+
+        }
+
+        return  prev;
+    }
+
+
+
 }

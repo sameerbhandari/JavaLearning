@@ -1,4 +1,4 @@
-package concepts.BuildUpLogicalThinking.DynamicProgramming;
+package concepts.BuildUpLogicalThinking;
 
 public class FindWaterInGlass {
 

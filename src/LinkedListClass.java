@@ -33,10 +33,10 @@ public class LinkedListClass {
         LinkedListClass previous = null;
 
         while (current != null) {
-            LinkedListClass next = current.next;
+            LinkedListClass temp = current.next;
             current.next = previous;
             previous = current;
-            current = next;
+            current = temp;
         }
         return previous;
     }
